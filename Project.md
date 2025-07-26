@@ -1,0 +1,1 @@
+Este proyecto trata de realizar una práctica del sistema de versionamiento git, aplicando algunas de las funciones más comunes e importantes
