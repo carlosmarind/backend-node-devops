@@ -1,0 +1,2 @@
+Este es un proyecto utilizado para la Tarea N°2 del curso de DevOps. Consiste en una aplicación de backend desarrollada con Node.js. El objetivo principal de este proyecto es aplicar los conceptos y prácticas de DevOps aprendidos en el curso, relacionadas con creación de ramas, commit, pull y push dentro de repositorios git.
+Carlos Rojas Alvear.
