@@ -96,3 +96,7 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+
+## Tarea Laboratorio_2_-_Push_and_Pull (Juan Cárdenas M.)
+Esta tarea enseña a crear una rama Fork y el los comandos para clonar, modificar objetos, agregar a la zona de preparación, hacer un commit y finalmente hacer un Pull.  (Juan Cárdenas M.)
