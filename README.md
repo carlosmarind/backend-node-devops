@@ -21,6 +21,9 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+## Comentario Personalizado
+Este es un comentario personalizado requerido por el punto 4 del Laboratorio_2_-_Push_and_Pull de U-Cursos por David Pérez.
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
