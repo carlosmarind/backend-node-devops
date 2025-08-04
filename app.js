@@ -14,6 +14,9 @@ app.get('/operaciones', (req, res) => {
   }
 
   res.json({ resultado });
+
+
+
 });
 
 const PUERTO = 3000;
