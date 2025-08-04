@@ -101,6 +101,13 @@ Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 ## pasos de ejecucion de nuestro proyecto
 
     npm install
-    npm run test
+    npm run test:cov
     npm run build
+    docker build -t backend-node-devops:cmd .
+    docker tag backend-node-devops:cmd carlosmarind/backend-node-devops:cmd
+    docker push carlosmarind/backend-node-devops:cmd
+
+    #ejecucion:
     node dist/main.js
+
+    docker run --rm -dp 8000:4000 --name backend-node-devops carlosmarind/backend-node-devops:cmd
