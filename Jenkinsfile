@@ -2,25 +2,36 @@ pipeline {
     agent any
     stages {
         stage('Instalacion de dependencias') {
-            steps {
-                sh 'npm install'
-            }
-        }
-        stage('En construccion') {
-            stages {
-                stage('Build') {
-                    steps {
-                        echo 'Building...'
-                        echo 'Building...'
-                    }
+            agent {
+                docker {
+                    image 'node:22'
+                    reuseNode true
                 }
-                stage('Build 2') {
+            }
+            stages{
+                stage('Instalacion de dependencias') {
                     steps {
-                        echo 'Building... 2'
-                        echo 'Building... 4'
+                        sh 'npm install'
                     }
                 }
             }
         }
+
+        //stage('En construccion') {
+        //    stages {
+        //        stage('Build') {
+        //            steps {
+        //                echo 'Building...'
+        //                echo 'Building...'
+        //            }
+        //        }
+        //        stage('Build 2') {
+        //            steps {
+        //                echo 'Building... 2'
+        //                echo 'Building... 4'
+        //            }
+        //        }
+        //    }
+        //}
     }
 }
