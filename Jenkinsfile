@@ -29,6 +29,8 @@ pipeline {
         stage('Etapa de empaquetado y delivery') {
             steps {
                 sh 'docker build -t backend-node-devops:cmd .'
+                sh 'docker tag backend-node-devops:cmd carlosmarind/backend-node-devops:cmd'
+                sh 'docker push carlosmarind/backend-node-devops:cmd'
             }
         }
     }
