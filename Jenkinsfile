@@ -29,7 +29,7 @@ pipeline {
         stage('Etapa de empaquetado y delivery') {
             steps {
                 script {
-                    docker.withRegistry('https://docker.io', 'docker-hub-credentials') {
+                    docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-credentials') {
                         sh 'docker build -t backend-node-devops:cmd .'
                         sh 'docker tag backend-node-devops:cmd carlosmarind/backend-node-devops:cmd'
                         sh 'docker push carlosmarind/backend-node-devops:cmd'
