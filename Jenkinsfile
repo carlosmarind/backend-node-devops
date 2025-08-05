@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Etapa de construccion') {
+        stage('Etapa de construccion / build de aplicacion') {
             agent {
                 docker {
                     image 'node:22'
@@ -34,8 +34,11 @@ pipeline {
                         sh 'docker tag backend-node-devops:cmd carlosmarind/backend-node-devops:cmd'
                         sh 'docker push carlosmarind/backend-node-devops:cmd'
                     }
+                    docker.withRegistry('http://localhost:8082', 'nexus-credentials') {
+                        sh 'docker tag backend-node-devops:cmd localhost:8082/backend-node-devops:cmd'
+                        sh 'docker push localhost:8082/backend-node-devops:cmd'
+                    }
                 }
-
             }
         }
     }
