@@ -74,6 +74,12 @@ pipeline {
             }
         }
         stage('Despliegue continuo') {
+            agent{
+                docker{
+                    image 'alpine/k8s:1.32.2'
+                    reuseNode true
+                }
+            }
             steps {
                 sh 'kubectl -n devops set image deployments backend-node-devops backend-node-devops=localhost:8082/backend-node-devops:rc1'
             }
