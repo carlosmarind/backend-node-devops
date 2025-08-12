@@ -62,13 +62,16 @@ pipeline {
             steps {
                 sh 'docker build -t backend-node-devops:cmd .'
                 sh 'docker tag backend-node-devops:cmd carlosmarind/backend-node-devops:cmd'
-                sh 'docker tag backend-node-devops:cmd localhost:8082/backend-node-devops:cmd'
+                sh 'docker tag backend-node-devops:cmd ackend-node-devops:cmd'
+                sh "docker tag backend-node-devops:cmd backend-node-devops:${BUILD_NUMBER}"
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-credentials') {
                         sh 'docker push carlosmarind/backend-node-devops:cmd'
+                        sh "docker push carlosmarind/backend-node-devops:${BUILD_NUMBER}"
                     }
                     docker.withRegistry('http://localhost:8082', 'nexus-credentials') {
                         sh 'docker push localhost:8082/backend-node-devops:cmd'
+                        sh "docker push localhost:8082/backend-node-devops:${BUILD_NUMBER}"
                     }
                 }
             }
@@ -81,8 +84,8 @@ pipeline {
                 }
             }
             steps {
-                withKubeConfig([credentialsId: 'kubeconfig-docker' ]){
-                     sh 'kubectl -n devops set image deployments backend-node-devops backend-node-devops=localhost:8082/backend-node-devops:rc1'
+                withKubeConfig([credentialsId: 'kubeconfig-docker']){
+                     sh "kubectl -n devops set image deployments backend-node-devops backend-node-devops=localhost:8082/backend-node-devops:${BUILD_NUMBER}"
                 }
             }
         }
