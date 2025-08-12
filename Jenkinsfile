@@ -81,7 +81,9 @@ pipeline {
                 }
             }
             steps {
-                sh 'kubectl -n devops set image deployments backend-node-devops backend-node-devops=localhost:8082/backend-node-devops:rc1'
+                withKubeConfig([credentialsId: 'kubeconfig-docker', serverUrl: 'http://localhost:8082' ]){
+                     sh 'kubectl -n devops set image deployments backend-node-devops backend-node-devops=localhost:8082/backend-node-devops:rc1'
+                }
             }
         }
     }
