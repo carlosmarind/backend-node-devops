@@ -17,7 +17,6 @@ describe('OperacionesService', () => {
   });
 
   it('probar suma de numeros', () => {
-
     let a: any = 10;
     let b: any = 40;
 
@@ -26,7 +25,7 @@ describe('OperacionesService', () => {
     expect(service.operar('suma', a, b)).toBeGreaterThan(49);
 
     a = null;
-    b = "50";
+    b = '50';
 
     expect(service.operar('suma', a, b)).toBeNaN();
 
@@ -34,18 +33,15 @@ describe('OperacionesService', () => {
     b = 50;
 
     expect(() => {
-      service.operar('suma', a, b)
+      service.operar('suma', a, b);
     }).toThrow('No se puede llamar con numeros indefinidos');
-
 
     a = '10';
     b = 30;
     expect(service.operar('suma', a, b)).toBeNaN();
 
-
     a = Math.PI;
     b = 30;
     expect(service.operar('suma', a, b)).toBeCloseTo(33.14, 2);
-
   });
 });
