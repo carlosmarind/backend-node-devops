@@ -3,7 +3,8 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class AppService {
   getHello(): string {
-    return 'Hello World!!!!!!';
+    const mensaje = 'mi nuevo saludo, Hello World!!!';
+    return `${mensaje}`;
   }
 
   getHola(): string {
