@@ -25,7 +25,7 @@ describe('AppController', () => {
   });
 });
 
-describe('AppController (e2e)', () => {
+describe('AppController (Integracion)', () => {
   let app: INestApplication<App>;
 
   beforeEach(async () => {

@@ -2,16 +2,16 @@ import { Controller, Get, Query, Res } from '@nestjs/common';
 import { OperacionesService } from './operaciones.service';
 import { Response } from 'express';
 
-@Controller('operaciones')
+@Controller('operaciones') // <- http://localhost:puerto/operaciones
 export class OperacionesController {
   constructor(private readonly operService: OperacionesService) {}
 
-  @Get()
+  @Get() // <- GET http://localhost:puerto/operaciones o http://localhost:4000/operaciones?operacion=resta&a=55&b=35
   operar(
     @Res() res: Response,
-    @Query('operacion') operacion: string,
-    @Query('a') a: number,
-    @Query('b') b: number,
+    @Query('operacion') operacion: string, // ?operacion=
+    @Query('a') a: number, // & a=
+    @Query('b') b: number, // & b=
   ) {
     const calculo = this.operService.operar(operacion, +a, +b);
 
