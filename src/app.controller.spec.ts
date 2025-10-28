@@ -43,4 +43,11 @@ describe('AppController (Integracion)', () => {
       .expect(200)
       .expect('Hello World!!');
   });
+
+  it('/hola (GET)', () => {
+    return request(app.getHttpServer())
+      .get('/hola')
+      .expect(200)
+      .expect('Hola Mundo!!!????');
+  });
 });
