@@ -4,18 +4,10 @@ pipeline {
             image "node:22"
         }
     }
-    options {
-        timeout(time:1 , unit:'MINUTES')
-    }
     stages{
         stage('inicio pipeline'){
             steps {
-                sh 'echo "saludos desde jenkins en el terminal"'
-            }
-        }
-        stage('mitad pipeline'){
-            steps {
-                sh 'echo "saludos desde jenkins la mitad del pipeline"'
+                sh 'echo "iniciando pipeline"'
             }
         }
         stage('dependencias'){
@@ -24,9 +16,27 @@ pipeline {
                 sh 'npm install'
             }
         }
+        stage('Lint de codigo'){
+            steps {
+                sh 'echo "Haciendo linter al codigo"'
+                sh 'npm run lint'
+            }
+        }
+        stage('Ejecutando test y coverage'){
+            steps {
+                sh 'echo "Haciendo testing al codigo"'
+                sh 'npm run test:cov'
+            }
+        }
+        stage('Ejecutando build'){
+            steps {
+                sh 'echo "Haciendo build del codigo"'
+                sh 'npm run build'
+            }
+        }
         stage('fin pipeline'){
             steps {
-                echo 'saludos desde jenkins en el pipeline'
+                echo 'finalizando pipeline'
             }
         }
     }
