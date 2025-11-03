@@ -34,6 +34,11 @@ pipeline {
                 sh 'npm run build'
             }
         }
+        stage('Build docker image'){
+            steps {
+               sh 'docker build -t backend-node .'
+            }
+        }
         stage('fin pipeline'){
             steps {
                 echo 'finalizando pipeline'
