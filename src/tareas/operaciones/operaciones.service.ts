@@ -7,6 +7,8 @@ export class OperacionesService {
       return this.#suma(a, b);
     } else if (operacion === 'resta') {
       return this.#resta(a, b);
+    } else if (operacion === 'multiplicar') {
+      return this.#multiplicar(a, b);
     }
   }
 
@@ -16,5 +18,9 @@ export class OperacionesService {
 
   #resta(a: number, b: number) {
     return a - b;
+  }
+
+  #multiplicar(a: number, b: number) {
+    return a * b;
   }
 }

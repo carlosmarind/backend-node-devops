@@ -25,7 +25,7 @@ describe('AppController', () => {
   });
 });
 
-describe('AppController (e2e)', () => {
+describe('AppController (Integracion)', () => {
   let app: INestApplication<App>;
 
   beforeEach(async () => {
@@ -42,5 +42,12 @@ describe('AppController (e2e)', () => {
       .get('/')
       .expect(200)
       .expect('Hello World!!');
+  });
+
+  it('/hola (GET)', () => {
+    return request(app.getHttpServer())
+      .get('/hola')
+      .expect(200)
+      .expect('Hola Mundo!!!????');
   });
 });
