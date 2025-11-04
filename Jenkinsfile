@@ -42,9 +42,13 @@ pipeline {
 
         stage('Build docker image'){
             steps {
-               sh 'docker build -t backend-node .'
-               sh 'docker tag backend-node carlosmarind/backend-node'
-               sh 'docker push carlosmarind/backend-node'
+                sh 'docker build -t backend-node .'
+                sh 'docker tag backend-node carlosmarind/backend-node'
+                script {
+                    docker.withRegistry("https://index.docker.io/v1/","id-credencial-jenkins"){
+                        sh 'docker push carlosmarind/backend-node'
+                    }
+                }
             }
         }
         stage('fin pipeline'){
