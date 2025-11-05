@@ -51,7 +51,7 @@ pipeline {
                         sh "docker push carlosmarind/backend-node:${env.BUILD_NUMBER}"
                     }
                     docker.withRegistry("https://ghcr.io","credencial-gh"){
-                        sh 'docker push carlosmarind/backend-node'
+                        sh 'docker push ghcr.io/carlosmarind/backend-node'
                         sh "docker push ghcr.io/carlosmarind/backend-node:${env.BUILD_NUMBER}"
                     }
                 }
