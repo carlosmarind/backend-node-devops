@@ -20,3 +20,42 @@ metadata:
 type: Opaque
 stringData:
   APIKEY: "123456789abcde"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-dp
+  namespace: devops
+  labels:
+    app: mi-app-devops
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend-devops
+  template:
+    metadata:
+      labels:
+        app: backend-devops
+    spec:
+      containers:
+      - name: backend
+        image: carlosmarind/backend-node
+        imagePullPolicy: Always
+        env:
+        - name: NODE_ENV
+          value: development
+        - name: PORT
+          value: "3000"
+        - name: USERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: backend-devops-cm
+              key: USERNAME
+              optional: true
+        - name: APIKEY
+          valueFrom:
+            secretKeyRef:
+              name: backend-devops-sc
+              key: APIKEY
+              optional: true
