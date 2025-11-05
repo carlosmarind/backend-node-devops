@@ -43,14 +43,16 @@ pipeline {
         stage('Build docker image'){
             steps {
                 sh 'docker build -t backend-node .'
-                sh 'docker tag backend-node carlosmarind/backend-node'
-                sh "docker tag backend-node carlosmarind/backend-node:${env.BUILD_NUMBER}"
                 script {
                     docker.withRegistry("https://index.docker.io/v1","credencial-dh"){
+                        sh 'docker tag backend-node carlosmarind/backend-node'
+                        sh "docker tag backend-node carlosmarind/backend-node:${env.BUILD_NUMBER}"
                         sh 'docker push carlosmarind/backend-node'
                         sh "docker push carlosmarind/backend-node:${env.BUILD_NUMBER}"
                     }
                     docker.withRegistry("https://ghcr.io","credencial-gh"){
+                        sh 'docker tag backend-node ghcr.io/carlosmarind/backend-node'
+                        sh "docker tag backend-node ghcr.io/carlosmarind/backend-node:${env.BUILD_NUMBER}"
                         sh 'docker push ghcr.io/carlosmarind/backend-node'
                         sh "docker push ghcr.io/carlosmarind/backend-node:${env.BUILD_NUMBER}"
                     }
