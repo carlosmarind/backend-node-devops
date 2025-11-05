@@ -46,7 +46,7 @@ pipeline {
                 sh 'docker tag backend-node carlosmarind/backend-node'
                 sh "docker tag backend-node carlosmarind/backend-node:${env.BUILD_NUMBER}"
                 script {
-                    docker.withRegistry("https://index.docker.io","credencial-dh"){
+                    docker.withRegistry("https://index.docker.io/v1","credencial-dh"){
                         sh 'docker push carlosmarind/backend-node'
                         sh "docker push carlosmarind/backend-node:${env.BUILD_NUMBER}"
                     }
