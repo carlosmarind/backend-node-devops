@@ -1,0 +1,7 @@
+compose/
+coverage/
+node_modules/
+dist/
+Dockerfile
+.git/
+.gitignore
