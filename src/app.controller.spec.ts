@@ -20,7 +20,7 @@ describe('AppController', () => {
 
   describe('Probar el modulo raiz del proyecto', () => {
     test('Esto deberia retornar hola mundo en ingles"', () => {
-      expect(appController.getHello()).toBe('Hello World!!');
+      expect(appController.getHello()).toBe('Saludos desde mi CICD');
     });
   });
 });
@@ -41,7 +41,7 @@ describe('AppController (Integracion)', () => {
     return request(app.getHttpServer())
       .get('/')
       .expect(200)
-      .expect('Hello World!!');
+      .expect('Saludos desde mi CICD');
   });
 
   it('/hola (GET)', () => {
