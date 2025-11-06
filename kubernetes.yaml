@@ -59,3 +59,37 @@ spec:
               name: backend-devops-sc
               key: APIKEY
               optional: true
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-svc
+  namespace: devops
+  labels:
+    app: mi-app-devops
+spec:
+  selector:
+    app: backend-devops
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-backend
+  namespace: devops
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: app.devops.cl
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: backend-svc
+            port:
+              number: 80
